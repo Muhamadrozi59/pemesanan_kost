@@ -1,0 +1,10 @@
+body{font-family:Segoe UI;background:#f5f5f5}
+.navbar{background:#3f7f74;padding:20px;display:flex;justify-content:space-between}
+.logo{color:white;font-size:24px;font-weight:bold}
+.navbar a{color:white;margin-left:15px;text-decoration:none}
+.hero{background:#3f7f74;padding:60px}
+.hero-card{background:rgba(0,0,0,.6);padding:60px;color:white;border-radius:20px}
+.btn-primary{background:white;color:#3f7f74;padding:10px 25px;border-radius:20px;text-decoration:none}
+.content{padding:40px}
+.card{background:white;padding:20px;margin:15px 0;border-radius:10px}
+.form input,.form select{display:block;margin:10px 0;padding:10px;width:300px}
