@@ -4,19 +4,17 @@
     Author     : MyBook Hype AMD
 --%>
 
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <%
-//tangkap request dari url
-    String hal = request.getParameter("halaman");
-    String url = hal + ".jsp";
-    if (hal != null) {
-//diarahkan sesuai request,jika ada request di url
-%>
-<jsp:include page=
-"<%= url%>" />
-<%
-} else { // tidak ada request di url, diarahkan ke hal home
-%>
-<%@include file="home.jsp" %>
-<%
+    String halaman = request.getParameter("halaman");
+
+    // default page
+    String url = "home.jsp";
+
+    if (halaman != null && !halaman.trim().isEmpty()) {
+        url = halaman.trim() + ".jsp";
     }
 %>
+
+<jsp:include page="<%= url %>" />

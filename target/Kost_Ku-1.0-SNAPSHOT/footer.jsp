@@ -4,6 +4,11 @@
     Author     : MyBook Hype AMD
 --%>
 
-<div class="alert alert-success" role="alert">
-  A simple success alert?check it out!
-</div>
+<footer class="alert text-center fixed-bottom mb-0"
+        role="alert"
+        style="background-color:#32302e; color:#fff;">
+    A simple success alert
+</footer>
+
+
+

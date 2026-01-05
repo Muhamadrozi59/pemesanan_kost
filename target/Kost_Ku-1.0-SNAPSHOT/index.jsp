@@ -1,35 +1,33 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>JSP</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <%@ include file="header.jsp" %>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <%@ include file="menu.jsp" %>
-                </div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-8">
-                    <%@ include file="main.jsp" %>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col-md-12">
-                    <%@ include file="footer.jsp" %>
-                </div>
-            </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kost Ku</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- FONT AWESOME (ICON TELEPON, LOKASI, JAM) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<%@ include file="menu.jsp" %>
+
+<!-- KONTEN -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <jsp:include page="main.jsp" />
         </div>
-        <script src="js/bootstrap.bundle.min.js"></script>
-    </body>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<%@ include file="footer.jsp" %>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

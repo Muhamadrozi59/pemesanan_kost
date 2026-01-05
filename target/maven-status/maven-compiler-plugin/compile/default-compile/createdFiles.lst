@@ -1,2 +1,13 @@
 com\mycompany\kost_ku\JakartaRestConfiguration.class
+controller\PesanServlet.class
+model\Kost.class
+controller\LoginServlet.class
+dao\KostDAO.class
+model\pesanan.class
+config\koneksi.class
+controller\LogoutServlet.class
+dao\UserDAO.class
 com\mycompany\kost_ku\resources\JakartaEE10Resource.class
+dao\pesananDAO.class
+controller\RegisterServlet.class
+model\User.class

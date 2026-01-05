@@ -1,38 +1,38 @@
-<%-- 
-    Document   : menu
-    Created on : 24 Des 2025, 11.34.21
-    Author     : MyBook Hype AMD
---%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">SMARTKOST</a>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <div class="container">
-        <a class="navbar-brand fw-bold" href="#">KOST KAMI</a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
+        <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-center text-lg-start">
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="home.jsp">Home</a>
+                    <a class="nav-link" href="index.jsp?halaman=home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Profil</a>
+                    <a class="nav-link" href="index.jsp?halaman=kost">Kost</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3" href="kamar.jsp">Kamar</a>
+                    <a class="nav-link" href="index.jsp?halaman=lokasi">Lokasi</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="pesan.jsp">Booking</a>
+                 <li class="nav-item">
+                    <a class="nav-link" href="index.jsp?halaman=About">About as</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Reservasi</a>
+                 <li class="nav-item">
+                    <a class="nav-link" href="index.jsp?halaman=contact">contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Tentang kami</a>
-                </li>
-                <li class="nav-item ms-lg-3">
-                    <a class="btn btn-outline-light" href="login.jsp" style="border-radius: 8px; padding: 5px 25px;">Login</a>
+
+                <!-- LOGIN -->
+                <li class="nav-item mt-3 mt-lg-0 ms-lg-3">
+                    <a class="btn btn-outline-light w-100 px-4"
+                       href="login.jsp"
+                       style="border-radius: 10px;">
+                        Login
+                    </a>
                 </li>
             </ul>
         </div>
