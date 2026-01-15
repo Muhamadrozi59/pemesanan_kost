@@ -17,9 +17,9 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate(); // HAPUS SEMUA DATA LOGIN
+            session.invalidate();
         }
 
-        response.sendRedirect("login.jsp");
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }

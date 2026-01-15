@@ -7,7 +7,7 @@
 <footer class="alert text-center fixed-bottom mb-0"
         role="alert"
         style="background-color:#32302e; color:#fff;">
-    A simple success alert
+    © 2026 <b>SMARTKOST</b>
 </footer>
 
 

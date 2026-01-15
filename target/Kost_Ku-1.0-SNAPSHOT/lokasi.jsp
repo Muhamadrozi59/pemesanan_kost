@@ -23,7 +23,7 @@
         <!-- JUDUL -->
         <div class="text-center mb-5">
             <h1 class="fw-bold text-dark">
-                Lokasi <span style="color:#8b5cf6;">Kost Kami</span>
+                Lokasi <span style="color:#8b5cf6;">SMARTKOST</span>
             </h1>
             <p class="text-secondary">
                 Temukan lokasi kost yang nyaman dan strategis

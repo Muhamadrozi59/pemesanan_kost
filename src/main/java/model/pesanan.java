@@ -3,16 +3,17 @@ package model;
 import java.sql.Date;
 
 public class pesanan {
+
     private int id;
     private String nama;
     private String noHp;
-    private String jenisKost; // Putra / Putri
+    private String jenisKost;
     private String lokasi;
     private Date tanggalMasuk;
     private int durasi;
     private String username;
+    private String status;
 
-    // getter & setter
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -36,4 +37,7 @@ public class pesanan {
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

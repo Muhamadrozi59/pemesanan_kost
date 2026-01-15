@@ -4,193 +4,151 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page session="true" %>
+
 <%
     if (session.getAttribute("user") == null) {
         response.sendRedirect("login.jsp");
         return;
     }
+
+    pesananDAO pDAO = new pesananDAO();
+    UserDAO uDAO = new UserDAO();
+
+    int totalPesanan = pDAO.getTotalPesanan();
+    int putra = pDAO.getTotalByJenis("Putra");
+    int putri = pDAO.getTotalByJenis("Putri");
+    int totalPengguna = uDAO.getTotalUser();
+    
+    // MENGAMBIL PENDAPATAN DARI DATABASE (HASIL DURASI X 500.000)
+    int totalPendapatan = pDAO.getRealRevenue(); 
+
+    int totalKost = 2;
+
+    int jan = pDAO.getTotalByMonth(1);
+    int feb = pDAO.getTotalByMonth(2);
+    int mar = pDAO.getTotalByMonth(3);
+    int apr = pDAO.getTotalByMonth(4);
+    int mei = pDAO.getTotalByMonth(5);
+    int jun = pDAO.getTotalByMonth(6);
+
+    List<pesanan> list = pDAO.getLatestPesanan(10);
 %>
 
-
 <!DOCTYPE html>
-<html lang="id">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <title>Dashboard Admin Kost</title>
+        <title>Dashboard Admin | SMARTKOST</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>body { font-family: 'Inter', sans-serif; }</style>
     </head>
 
-    <body class="bg-gray-100 flex">
+    <body class="bg-gray-50 flex">
 
-        <%
-            pesananDAO pesananDAO = new pesananDAO();
-            UserDAO userDAO = new UserDAO();
+        <jsp:include page="sidebar.jsp" />
 
-            int totalPesanan = 0;
-            int putra = 0;
-            int putri = 0;
-            int totalPengguna = 0;
-            int totalPendapatan = 0;
-
-            List<pesanan> list = null;
-
-            try {
-                totalPesanan = pesananDAO.getTotalPesanan();
-                putra = pesananDAO.getTotalByJenis("Putra");
-                putri = pesananDAO.getTotalByJenis("Putri");
-                list = pesananDAO.getLatestPesanan(10);
-
-                totalPengguna = userDAO.getTotalUser();
-                totalPendapatan = totalPesanan * 500000;
-            } catch (SQLException e) {
-                out.println("<p class='text-red-500'>" + e.getMessage() + "</p>");
-            }
-
-            int totalKost = putra + putri;
-        %>
-
-        <!-- SIDEBAR -->
-        <aside class="w-64 bg-white min-h-screen shadow-lg">
-            <div class="p-6 text-xl font-bold text-indigo-600">SMARTKOST</div>
-            <nav class="px-4 space-y-2">
-                <a class="block bg-indigo-100 text-indigo-700 px-4 py-2 rounded">Dashboard</a>
-                <a href="jenis_kost.jsp"
-                   class="block text-gray-600 hover:bg-gray-100 px-4 py-2 rounded">
-                    Data Kost
-                </a>
-
-                <a class="block text-gray-600 hover:bg-gray-100 px-4 py-2 rounded">Pesanan</a>
-                <a class="block text-gray-600 hover:bg-gray-100 px-4 py-2 rounded">Pengguna</a>
-            </nav>
-        </aside>
-
-        <!-- MAIN -->
-        <div class="flex-1">
-
-            <!-- TOPBAR -->
-            <header class="bg-white px-6 py-4 shadow flex justify-between items-center">
-                <span class="text-gray-600">Dashboard / <b>Overview</b></span>
-                <a href="<%= request.getContextPath()%>/logout"
-                   class="bg-red-500 text-white px-4 py-2 rounded">
-                    Logout
-                </a>
-            </header>
-
-            <main class="p-6 space-y-6">
-
-                <!-- STAT CARD -->
+        <div class="flex-1 flex flex-col min-h-screen">
+            <jsp:include page="headerAdmin.jsp"/>
+            
+            <main class="p-8 space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-
-                    <div class="bg-white p-5 rounded-xl shadow">
-                        <p class="text-gray-500 text-sm">Total Kost</p>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2"><%= totalKost%></h2>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-sm text-gray-400 font-medium">Total Kost</p>
+                        <h3 class="text-2xl font-bold text-gray-800"><%=totalKost%></h3>
                     </div>
-
-                    <div class="bg-white p-5 rounded-xl shadow">
-                        <p class="text-gray-500 text-sm">Total Pesanan</p>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2"><%= totalPesanan%></h2>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-sm text-gray-400 font-medium">Total Pesanan</p>
+                        <h3 class="text-2xl font-bold text-gray-800 text-indigo-600"><%=totalPesanan%></h3>
                     </div>
-
-                    <div class="bg-white p-5 rounded-xl shadow">
-                        <p class="text-gray-500 text-sm">Total Pendapatan</p>
-                        <h2 class="text-2xl font-bold text-gray-800 mt-2">
-                            Rp <%= String.format("%,d", totalPendapatan)%>
-                        </h2>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-sm text-gray-400 font-medium">Total Pendapatan</p>
+                        <h3 class="text-2xl font-bold text-gray-800 text-green-600">Rp <%=String.format("%,d", totalPendapatan)%></h3>
                     </div>
-
-                    <div class="bg-white p-5 rounded-xl shadow">
-                        <p class="text-gray-500 text-sm">Total Pengguna</p>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2"><%= totalPengguna%></h2>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <p class="text-sm text-gray-400 font-medium">Total Pengguna</p>
+                        <h3 class="text-2xl font-bold text-gray-800"><%=totalPengguna%></h3>
                     </div>
-
                 </div>
 
-                <!-- GRAFIK -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                    <div class="bg-white p-6 rounded-xl shadow md:col-span-2">
-                        <h3 class="font-semibold text-gray-700 mb-4">Grafik Pesanan</h3>
+                    <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h4 class="text-sm font-bold text-gray-700 mb-4 uppercase">Tren Pesanan 2026</h4>
                         <canvas id="lineChart" height="120"></canvas>
                     </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow">
-                        <h3 class="font-semibold text-gray-700 mb-4">Jenis Kost</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h4 class="text-sm font-bold text-gray-700 mb-4 uppercase">Distribusi Jenis</h4>
                         <canvas id="donutChart"></canvas>
                     </div>
-
                 </div>
 
-                <!-- TABLE -->
-                <div class="bg-white p-6 rounded-xl shadow">
-                    <h3 class="font-semibold text-gray-700 mb-4">Pesanan Terbaru</h3>
-                    <table class="w-full text-sm border">
-                        <thead class="bg-gray-100">
-                            <tr class="text-center">
-                                <th class="border px-2 py-2">No</th>
-                                <th class="border px-2 py-2">Nama</th>
-                                <th class="border px-2 py-2">Jenis</th>
-                                <th class="border px-2 py-2">Lokasi</th>
-                                <th class="border px-2 py-2">Tanggal</th>
-                                <th class="border px-2 py-2">Durasi</th>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="p-6 border-b border-gray-50">
+                        <h4 class="text-sm font-bold text-gray-700 uppercase">Pesanan Terbaru</h4>
+                    </div>
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-gray-50 text-gray-400 text-[10px] uppercase font-bold tracking-wider">
+                            <tr>
+                                <th class="px-6 py-3">No</th>
+                                <th class="px-6 py-3">Nama</th>
+                                <th class="px-6 py-3">Jenis</th>
+                                <th class="px-6 py-3">Lokasi</th>
+                                <th class="px-6 py-3">Tanggal Masuk</th>
+                                <th class="px-6 py-3 text-center">Durasi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-sm text-gray-600 divide-y divide-gray-50">
                             <%
                                 int no = 1;
-                                if (list != null) {
-                                    for (pesanan p : list) {
+                                for (pesanan p : list) {
                             %>
-                            <tr class="text-center hover:bg-gray-50">
-                                <td class="border px-2 py-2"><%= no++%></td>
-                                <td class="border px-2 py-2"><%= p.getNama()%></td>
-                                <td class="border px-2 py-2"><%= p.getJenisKost()%></td>
-                                <td class="border px-2 py-2"><%= p.getLokasi()%></td>
-                                <td class="border px-2 py-2"><%= p.getTanggalMasuk()%></td>
-                                <td class="border px-2 py-2"><%= p.getDurasi()%> bln</td>
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-6 py-4"><%=no++%></td>
+                                <td class="px-6 py-4 font-bold text-gray-800"><%=p.getNama()%></td>
+                                <td class="px-6 py-4"><%=p.getJenisKost()%></td>
+                                <td class="px-6 py-4"><%=p.getLokasi()%></td>
+                                <td class="px-6 py-4"><%=p.getTanggalMasuk()%></td>
+                                <td class="px-6 py-4 text-center"><span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded text-xs font-bold"><%=p.getDurasi()%> bln</span></td>
                             </tr>
-                            <%
-                                    }
-                                }
-                            %>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>
-
             </main>
+
+            <footer class="text-center py-4 bg-white border-t border-gray-100 text-gray-400 text-[10px]">
+                &copy; 2026 <b>SMARTKOST</b>. Management System Dashboard.
+            </footer>
         </div>
 
-        <!-- CHART SCRIPT -->
         <script>
-            new Chart(document.getElementById('donutChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Putra', 'Putri'],
-                    datasets: [{
-                            data: [<%= putra%>, <%= putri%>]
-                        }]
-                }
-            });
-
-            new Chart(document.getElementById('lineChart'), {
+            new Chart(document.getElementById("lineChart"), {
                 type: 'line',
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
                     datasets: [{
-                            label: 'Pesanan',
-                            data: [
-            <%= totalPesanan%>,
-            <%= totalPesanan%>,
-            <%= totalPesanan%>,
-            <%= totalPesanan%>,
-            <%= totalPesanan%>,
-            <%= totalPesanan%>
-                            ],
-                            borderWidth: 2
-                        }]
-                }
+                        label: 'Pesanan',
+                        data: [<%=jan%>, <%=feb%>, <%=mar%>, <%=apr%>, <%=mei%>, <%=jun%>],
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: { plugins: { legend: { display: false } } }
+            });
+
+            new Chart(document.getElementById("donutChart"), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Putra', 'Putri'],
+                    datasets: [{
+                        data: [<%=putra%>, <%=putri%>],
+                        backgroundColor: ['#4f46e5', '#ec4899']
+                    }]
+                },
+                options: { cutout: '70%' }
             });
         </script>
-
     </body>
 </html>

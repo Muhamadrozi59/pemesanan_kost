@@ -127,7 +127,7 @@
                             <i class="bi bi-telephone-fill"></i>
                             <div>
                                 <strong>Layanan Pelanggan</strong>
-                                <p>+6221 5555 6789<br>Bebas Pulsa: 0800-123-4567</p>
+                                <p>+6288 296 528 953<br>Bebas Pulsa: 0800-123-4567</p>
                             </div>
                         </div>
 
@@ -135,7 +135,7 @@
                             <i class="bi bi-envelope-fill"></i>
                             <div>
                                 <strong>Dukungan Email</strong>
-                                <p>info@Kostkami.com<br>support@driveeasy.com</p>
+                                <p>info@smartkost.com<br>support@smartkost.com</p>
                             </div>
                         </div>
 
@@ -143,8 +143,8 @@
                             <i class="bi bi-clock-fill"></i>
                             <div>
                                 <strong>Jam Operasional</strong>
-                                <p>Senin ? Jumat: 08.00 ? 20.00<br>
-                                    Sabtu ? Minggu: 09.00 ? 18.00</p>
+                                <p>Senin - Jumat: 08.00 - 20.00<br>
+                                    Sabtu - Minggu: 09.00 - 18.00</p>
                             </div>
                         </div>
                     </div>
@@ -159,11 +159,11 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label>Nama Anda</label>
-                                    <input type="text" class="form-control" placeholder="John Doe">
+                                    <input type="text" class="form-control" placeholder="Rozi">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="john@email.com">
+                                    <input type="email" class="form-control" placeholder="zhie@email.com">
                                 </div>
 
                                 <div class="col-12">
