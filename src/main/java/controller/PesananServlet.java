@@ -16,7 +16,7 @@ public class PesananServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8"); 
+        request.setCharacterEncoding("UTF-8");
         String proses = request.getParameter("proses");
         pesananDAO dao = new pesananDAO();
 
@@ -57,7 +57,7 @@ public class PesananServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         response.sendRedirect("pesanan.jsp");
     }
 

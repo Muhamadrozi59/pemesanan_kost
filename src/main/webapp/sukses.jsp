@@ -32,10 +32,6 @@
             Kembali ke Home
         </a>
 
-        <a href="pesan?step=5"
-           class="block w-full py-3 rounded-lg bg-gray-500 text-white font-semibold">
-            Lihat Pesanan Saya
-        </a>
     </div>
 </div>
 

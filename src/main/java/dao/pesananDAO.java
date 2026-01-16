@@ -17,7 +17,7 @@ public class pesananDAO {
     // INSERT
     public void insert(pesanan p) throws SQLException {
         String sql = "INSERT INTO pesanan (nama, no_hp, jenis_kost, lokasi, tanggal_masuk, durasi, username, status) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, p.getNama());
         ps.setString(2, p.getNoHp());
@@ -63,7 +63,9 @@ public class pesananDAO {
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         int t = 0;
-        if (rs.next()) t = rs.getInt(1);
+        if (rs.next()) {
+            t = rs.getInt(1);
+        }
         rs.close();
         st.close();
         return t;
@@ -75,7 +77,9 @@ public class pesananDAO {
         String sql = "SELECT SUM(total_biaya) FROM pembayaran";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
-        if (rs.next()) t = rs.getInt(1);
+        if (rs.next()) {
+            t = rs.getInt(1);
+        }
         rs.close();
         st.close();
         return t;
@@ -88,7 +92,9 @@ public class pesananDAO {
         ps.setInt(1, m);
         ResultSet rs = ps.executeQuery();
         int t = 0;
-        if (rs.next()) t = rs.getInt(1);
+        if (rs.next()) {
+            t = rs.getInt(1);
+        }
         rs.close();
         ps.close();
         return t;
@@ -101,7 +107,9 @@ public class pesananDAO {
         ps.setString(1, j);
         ResultSet rs = ps.executeQuery();
         int t = 0;
-        if (rs.next()) t = rs.getInt(1);
+        if (rs.next()) {
+            t = rs.getInt(1);
+        }
         rs.close();
         ps.close();
         return t;

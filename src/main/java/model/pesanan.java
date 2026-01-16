@@ -14,30 +14,75 @@ public class pesanan {
     private String username;
     private String status;
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getNama() { return nama; }
-    public void setNama(String nama) { this.nama = nama; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getNoHp() { return noHp; }
-    public void setNoHp(String noHp) { this.noHp = noHp; }
+    public String getNama() {
+        return nama;
+    }
 
-    public String getJenisKost() { return jenisKost; }
-    public void setJenisKost(String jenisKost) { this.jenisKost = jenisKost; }
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
-    public String getLokasi() { return lokasi; }
-    public void setLokasi(String lokasi) { this.lokasi = lokasi; }
+    public String getNoHp() {
+        return noHp;
+    }
 
-    public Date getTanggalMasuk() { return tanggalMasuk; }
-    public void setTanggalMasuk(Date tanggalMasuk) { this.tanggalMasuk = tanggalMasuk; }
+    public void setNoHp(String noHp) {
+        this.noHp = noHp;
+    }
 
-    public int getDurasi() { return durasi; }
-    public void setDurasi(int durasi) { this.durasi = durasi; }
+    public String getJenisKost() {
+        return jenisKost;
+    }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public void setJenisKost(String jenisKost) {
+        this.jenisKost = jenisKost;
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public String getLokasi() {
+        return lokasi;
+    }
+
+    public void setLokasi(String lokasi) {
+        this.lokasi = lokasi;
+    }
+
+    public Date getTanggalMasuk() {
+        return tanggalMasuk;
+    }
+
+    public void setTanggalMasuk(Date tanggalMasuk) {
+        this.tanggalMasuk = tanggalMasuk;
+    }
+
+    public int getDurasi() {
+        return durasi;
+    }
+
+    public void setDurasi(int durasi) {
+        this.durasi = durasi;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
